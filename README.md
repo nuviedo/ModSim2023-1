@@ -6,9 +6,9 @@ Final Project for the Modelling & Simulation 2023-1 class, taught by Dr. Victor 
 
 > Alexis Nuviedo ([@nuviedo](https://github.com/nuviedo))
 > 
-> Jadiel Zuñiga ([@jzuniga](https://github.com/jzuniga))
+> Jadiel Zuñiga ([@jzrodriguez](https://github.com/jzrodriguez))
 > 
-> Mariela Arias ([@m.arias](https://github.com/m.arias))
+> Mariela Arias ([@marielaariass](https://github.com/marielaariass))
 
 The contents of this repository are licensed under the GNU General Public License version 3. Visit https://www.gnu.org/licenses/gpl-3.0.html for more information.
 
