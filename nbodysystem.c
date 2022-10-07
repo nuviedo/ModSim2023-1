@@ -21,29 +21,28 @@ void NBodySystemAddParticle(struct NBodySystem* M, struct Body B) {
 void NBodySystemPrint(struct NBodySystem* M) {
 	printf("---NBODY_MODEL_START---\n");
 	for (int i = 0; i < M->_next_body_to_add; i++) {
-		struct Body* b = &(M->bodies[i]);
-		struct Body B = *b;
-		printf("(Body<%p> ", (void*)b);
+		struct Body* B = &(M->bodies[i]);
+		printf("(Body<%p> ", (void*)B);
 		printf("[");
-		for (int j = 0; j < B.dim; j++) {
-			printf("%.04f",B.p[j]);
-			if (j != B.dim-1) {
+		for (int j = 0; j < B->dim; j++) {
+			printf("%.04f",B->p[j]);
+			if (j != B->dim-1) {
 				printf(", ");
 			}
 		}
 		printf("]");
 		printf("[");
-		for (int j = 0; j < B.dim; j++) {
-			printf("%.04f", B.v[j]);
-			if (j != B.dim - 1) {
+		for (int j = 0; j < B->dim; j++) {
+			printf("%.04f", B->v[j]);
+			if (j != B->dim - 1) {
 				printf(", ");
 			}
 		}
 		printf("]");
 		printf("[");
-		for (int j = 0; j < B.dim; j++) {
-			printf("%.04f", B.a[j]);
-			if (j != B.dim - 1) {
+		for (int j = 0; j < B->dim; j++) {
+			printf("%.04f", B->a[j]);
+			if (j != B->dim - 1) {
 				printf(", ");
 			}
 		}
@@ -53,5 +52,8 @@ void NBodySystemPrint(struct NBodySystem* M) {
 }
 
 void DeallocateNBodySystem(struct NBodySystem* M) {
+	for (int i = 0; i < M->_next_body_to_add; i++) {
+		DeallocateBody(&(M->bodies[i]));
+	}
 	free(M->bodies);
 }
