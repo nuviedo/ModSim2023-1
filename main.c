@@ -1,42 +1,45 @@
-#include"body.h"
-#include"nbodysystem.h"
-#include"integrator.h"
-#include"main.h"
+// Author: Victor De la Luz
+// vdelaluz@enesmorelia.unam.mx
+// GNU/GPL
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <time.h>
 
-int main() {
-	printf("Initializing NBody simulation.\n");
-	struct Integrator I=AllocateIntegrator(Trapezium, 0.0);
-	struct NBodySystem M=AllocateNBodySystem(3,&I);
+#include "numeric.h"
+#include "model.h"
+#include "physics.h"
+#include "particle.h"
 
-	struct Body Body1 = AllocateBody(3);
-	Body1.p[0] = 0.0;
-	Body1.p[1] = 1.0;
-	Body1.p[2] = 2.0;
-	Body1.v[0] = 2.0;
-	Body1.v[1] = 1.0;
-	Body1.v[2] = 0.0;
-	Body1.a[0] = 0.0;
-	Body1.a[1] = 1.0;
-	Body1.a[2] = 2.0;
+//MKS system
 
-	struct Body Body2 = AllocateBody(3);
-	Body2.p[0] = 0.0;
-	Body2.p[1] = 0.0;
-	Body2.p[2] = 0.0;
-	Body2.v[0] = 0.0;
-	Body2.v[1] = 0.0;
-	Body2.v[2] = 0.0;
-	Body2.a[0] = 0.0;
-	Body2.a[1] = 0.0;
-	Body2.a[2] = 0.0;
+int main(int argn, char **args){
 
-	NBodySystemAddParticle(&M, Body1);
-	NBodySystemAddParticle(&M, Body2);
+    int N=3;
+    double M=2e11; 
+	
+    printf("%d\n", N);
+    printf("%lf\n", M);
 
-	NBodySystemPrint(&M);
-	NBodySystemPrint(&M);
+    Model model = new_Model("System", N);
 
-	printf("Finalizing NBody simulation.\n");
-	return 0;
+    srand((unsigned int)time(0));
+
+    //earth
+    add_Particle_to_Model(&model, new_Particle(5.9722e24, 149597871000, 0, 0, 0, 29799.6861, 0));
+    //moon
+    add_Particle_to_Model(&model, new_Particle(7.4e22, 149597871000, 0, 384399861, 0, 29799.6861, 3683));
+    //sun
+    add_Particle_to_Model(&model, new_Particle(1.988e30, 0, 0, 0, 0, 0, 0));
+
+    for (int i = 0; i < 20000; i++) {
+        if ((i % 50) == 0) {
+            printf("#%i\n", i);
+            print_Model(model);
+        }
+        integrate(&model, 1.0*60);
+    }
+
+    return 0;
 }
