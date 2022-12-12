@@ -15,7 +15,7 @@ def optional_input(prompt,default):
 #Mass=optional_input("Particle mass",10000000000000000000000)
 print("Running model")
 #result=subprocess.run(f".\\x64\\Debug\\NobodyWIN64.exe {Bodies} {M} {VMax} {Mass} > result.bin",shell=True)
-result=subprocess.run(f".\\x64\\Debug\\NobodyWIN64.exe > result.bin",shell=True)
+result=subprocess.run(f"NobodyWIN64 > result.bin",shell=True)
 
 subprocess.run(f"rm .\\video\\*",shell=True)
 print("Generating frames")
