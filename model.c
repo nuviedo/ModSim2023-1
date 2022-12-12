@@ -12,8 +12,8 @@
 Model new_Model(char *name, int N){
   Model model;
   //sscanf(name,"%s",(*model).name);
-  //strcpy(model.name, name);
-  strcpy_s(model.name, 128, name);
+  strcpy(model.name, name);
+  //strcpy_s(model.name, 128, name);
   model.N = N;
   model.i = 0;
   model.particles = malloc(sizeof(Particle)*N);
