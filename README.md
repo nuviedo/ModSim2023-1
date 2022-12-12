@@ -35,9 +35,15 @@ The existing N-body simulator was partially rewritten to allow for faster integr
 ### Run
 To execute the model, simply run execute.py in the main folder.
 
+### Dependencies
+
+* Install python >=3.10 
+* Install pip3 (`sudo apt-get install python3-pip`)
+* Install matplotlib with pip3 (`pip install matplotlib`)
+
 ### Results
 The resulting object was made with a modified visor.py that displays the model rotating in 3D, as follows:
-![nbody](https://user-images.githubusercontent.com/100146672/203606557-8eb96385-d7e9-4e15-9044-30482d9c38fc.gif)
+![nbody](https://user-images.githubusercontent.com/100146672/206954856-3859f68a-0682-4bae-bf6e-fa8681b30a85.gif)
 
 It is easy to appreciate that the earth and moon remain in relative close proximity within expected parameters for their usual behavior.
 
