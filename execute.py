@@ -25,4 +25,5 @@ import v3d2
 
 print("Joining frames")
 subprocess.run(f"convert -delay 3 -loop 0 video/*.png nbody.gif",shell=True)
+subprocess.run(f"rm ./video/*",shell=True)
 print("OK")
