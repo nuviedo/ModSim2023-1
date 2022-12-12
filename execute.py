@@ -8,7 +8,8 @@ def optional_input(prompt,default):
     except:
         x=default
     return x
-subprocess.run(f"pip install matplotlib",shell=True)
+
+subprocess.run(f"pip3 install matplotlib",shell=True)
 
 #Bodies=optional_input("Number of bodies",15)
 #M=optional_input("Cube side length",10000000)
